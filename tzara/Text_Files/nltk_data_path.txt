@@ -1,2 +1,2 @@
-/home/swe/nltk_data
+/home/tech/nltk_data
 
