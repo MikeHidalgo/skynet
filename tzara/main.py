@@ -3,6 +3,7 @@ Tzara - An Intelligent Personal Assistant.
 
 Main loop.
 """
+
 import time
 from tzara import tzara
 from Speech import speak
@@ -70,6 +71,7 @@ def check_reminder():
     f_reminder.close()
 
 def main():
+
     """
     Greets the user.
     Checks when the system was last updated.
@@ -78,22 +80,26 @@ def main():
     If input is "bye" (or similar), quits.
     Else passes the user input to the function tzara() stored in tzara.py
     """
+
     greetings_path = os.getcwd() + "/Text_Files/greetings.txt"
     f_greetings = open(greetings_path, "r")  
     greetings_list = f_greetings.read().strip().split("\n")
     f_greetings.close()
-    random_greeting = random.randrange(0, len(greetings_list))
-    speak(greetings_list[random_greeting])
 
-    check_last_update()
-    check_reminder()
-    
     bye_path = os.getcwd() + "/Text_Files/bye.txt"
     f_bye = open(bye_path, "r")  
     bye_list = f_bye.read().strip().split("\n")
     f_bye.close()
     bye_list2 = [''.join(bye_list[i])+" tzara" for i in range(0, len(bye_list))]
     bye_list3 = [''.join(bye_list[i])+" then" for i in range(0, len(bye_list))]
+
+    random_greeting = random.randrange(0, len(greetings_list))
+    speak(greetings_list[random_greeting])
+
+    check_last_update()
+    check_reminder()
+    
+
     while 1:
         input_string = raw_input('\033[1m'+'Ask me something: '+'\033[0m')  #modify
         if input_string:
@@ -111,3 +117,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
